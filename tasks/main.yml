@@ -15,7 +15,7 @@
     file: "{{ item }}"
     name: "{{ 'site_incl_vars_' ~ item|basename|splitext|first }}"
   with_fileglob:
-  - "{{ site_config_dir }}/*.yaml"
+    - "{{ site_config_dir }}/*.yaml"
 
 - name: Set site configuration variable
   set_fact:
@@ -24,21 +24,21 @@
 
 - name: VO configuration
   block:
-  - name: Create /etc/egi directory
-    file:
-      path: /etc/egi
-      state: directory
-      mode: 0755
-  - name: Create /etc/egi/vos directory
-    file:
-      path: /etc/egi/vos
-      state: directory
-      mode: 0755
-  # Loop over the VO configuration
-  - name: create VO specific files
-    include_tasks: vo-config.yml
-    loop: "{{ vos | dict2items }}"
-    no_log: True
+    - name: Create /etc/egi directory
+      file:
+        path: /etc/egi
+        state: directory
+        mode: 0755
+    - name: Create /etc/egi/vos directory
+      file:
+        path: /etc/egi/vos
+        state: directory
+        mode: 0755
+    # Loop over the VO configuration
+    - name: create VO specific files
+      include_tasks: vo-config.yml
+      loop: "{{ vos | dict2items }}"
+      no_log: true
 
 
 - name: Configure cloud-info
@@ -69,5 +69,5 @@
       site: "{{ item }}"
       filename: "{{ item.gocdb | replace('.', '-') }}-{{ item.endpoint | hash('md5') }}"
     with_items:
-    - "{{ sites }}"
+      - "{{ sites }}"
     when: sites is iterable

@@ -23,11 +23,11 @@
 - name: install docker
   apt:
     name:
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: present
-    update_cache: yes
+    update_cache: true
 
 #- name: kill running stuff if any
 #  shell: |
