@@ -43,31 +43,31 @@
 
 - name: Configure cloud-info
   block:
-  - name: Create /etc/egi directory
-    file:
-      path: /etc/egi
-      state: directory
-      mode: 0755
-  - name: Create /etc/egi/cloud-info directory
-    file:
-      path: /etc/egi/cloud-info
-      state: directory
-      mode: 0755
-  - name: Create /var/lock/cloud-info directory
-    file:
-      path: /var/lock/cloud-info
-      state: directory
-      mode: 0755
-  - name: Create /var/log/cloud-info directory
-    file:
-      path: /var/log/cloud-info
-      state: directory
-      mode: 0755
-  - name: site specific config
-    include_tasks: cloud-info.yml
-    vars:
-      site: "{{ item }}"
-      filename: "{{ item.gocdb | replace('.', '-') }}-{{ item.endpoint | hash('md5') }}"
-    with_items:
-      - "{{ sites }}"
-    when: sites is iterable
+    - name: Create /etc/egi directory
+      file:
+        path: /etc/egi
+        state: directory
+        mode: 0755
+    - name: Create /etc/egi/cloud-info directory
+      file:
+        path: /etc/egi/cloud-info
+        state: directory
+        mode: 0755
+    - name: Create /var/lock/cloud-info directory
+      file:
+        path: /var/lock/cloud-info
+        state: directory
+        mode: 0755
+    - name: Create /var/log/cloud-info directory
+      file:
+        path: /var/log/cloud-info
+        state: directory
+        mode: 0755
+    - name: site specific config
+      include_tasks: cloud-info.yml
+      vars:
+        site: "{{ item }}"
+        filename: "{{ item.gocdb | replace('.', '-') }}-{{ item.endpoint | hash('md5') }}"
+      with_items:
+        - "{{ sites }}"
+      when: sites is iterable
