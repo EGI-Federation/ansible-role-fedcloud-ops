@@ -16,3 +16,13 @@
               - auth:
                   project_id: b987659
                 name: vo.example.com
+          - endpoint: https://site.org:5000/v3/
+            gocdb: bar.foo
+            region: region1
+            vos:
+              - auth:
+                  project_id: a123456
+                name: sample_vo
+              - auth:
+                  project_id: b987659
+                name: vo.example.com
