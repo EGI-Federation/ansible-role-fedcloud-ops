@@ -23,3 +23,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           # Fail on errors
           DISABLE_ERRORS: false
+          # This is not working for jinja2 templates
+          VALIDATE_ENV: false

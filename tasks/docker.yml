@@ -23,16 +23,11 @@
 - name: install docker
   apt:
     name:
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: present
-    update_cache: yes
-
-#- name: kill running stuff if any
-#  shell: |
-#    docker stop $(docker ps -a -q)
-#    docker rm -v $(docker ps -a -q)
+    update_cache: true
 
 - name: ensure docker config dir is present
   file:
@@ -60,4 +55,4 @@
   systemd:
     name: docker
     state: restarted
-    daemon_reload: yes
+    daemon_reload: true

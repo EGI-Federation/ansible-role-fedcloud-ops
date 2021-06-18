@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: fedcloud_ops
+  namespace: egi_federation
   author: enol.fernandez@egi.eu
   description: Fedcloud catchall operations
   company: EGI Foundation
