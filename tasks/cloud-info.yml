@@ -15,7 +15,7 @@
   cron:
     name: cloud-info-provider {{ site.gocdb }}
     weekday: "*"
-    minute: "*/5"
+    minute: "*/12"
     hour: "*"
     user: root
     job: >
