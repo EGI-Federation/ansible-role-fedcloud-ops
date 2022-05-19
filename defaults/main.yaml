@@ -1,6 +1,7 @@
 # VOs
 vos:
   sample_vo:
+    expiry: 2022-01-01 00:00
     auth:
       client_secret: foo
       client_id: bar
