@@ -13,13 +13,13 @@
 - name: load site configuration
   include_vars:
     file: "{{ item }}"
-    name: "{{ 'site_incl_vars_' ~ item|basename|splitext|first }}"
+    name: "{{ 'site_incl_vars_' ~ item | basename | splitext | first }}"
   with_fileglob:
     - "{{ site_config_dir }}/*.yaml"
 
 - name: Set site configuration variable
   set_fact:
-    sites: "{{ sites|default([]) + [lookup('vars', item)] }}"
+    sites: "{{ sites | default([]) + [lookup('vars', item)] }}"
   loop: "{{ query('varnames', '^site_incl_vars_(.*)$') }}"
 
 - name: VO configuration
