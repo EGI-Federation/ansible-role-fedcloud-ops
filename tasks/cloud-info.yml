@@ -1,17 +1,17 @@
 ---
-- name: cloud-info config directory
+- name: Cloud-info config directory
   ansible.builtin.template:
     src: site-info.yaml.j2
     dest: /etc/egi/cloud-info/{{ filename }}.yaml
     mode: 0600
 
-- name: cloud info env
+- name: Cloud info env
   ansible.builtin.template:
     src: cloud-info.env.j2
     dest: /etc/egi/cloud-info/{{ filename }}.env
     mode: 0600
 
-- name: cloud info cron
+- name: Cloud info cron
   ansible.builtin.cron:
     name: cloud-info-provider {{ site.gocdb }}
     weekday: "*"
