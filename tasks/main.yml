@@ -6,7 +6,7 @@
     update_cache: true
 
 - name: Install docker
-  ansible.builtin.include: docker.yml
+  ansible.builtin.include_tasks: docker.yml
   # this is only executed if explicity requested
   tags: ['never', 'docker']
 

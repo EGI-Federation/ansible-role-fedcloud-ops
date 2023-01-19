@@ -1,4 +1,5 @@
-- name: install dependencies
+---
+- name: Install dependencies
   ansible.builtin.apt:
     name:
       - apt-transport-https
@@ -20,7 +21,7 @@
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
 
-- name: install docker
+- name: Install docker
   ansible.builtin.apt:
     name:
       - docker-ce
@@ -29,13 +30,13 @@
     state: present
     update_cache: true
 
-- name: ensure docker config dir is present
+- name: Ensure docker config dir is present
   ansible.builtin.file:
     path: /etc/docker
     state: directory
     mode: 0775
 
-- name: configure docker
+- name: Configure docker
   ansible.builtin.copy:
     # this is very CESNET-MCC specific, may be better to move as configurable
     content: |
@@ -51,7 +52,7 @@
     dest: /etc/docker/daemon.json
     mode: 0660
 
-- name: restart docker
+- name: Restart docker
   ansible.builtin.systemd:
     name: docker
     state: restarted
