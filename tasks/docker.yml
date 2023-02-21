@@ -34,7 +34,7 @@
   ansible.builtin.file:
     path: /etc/docker
     state: directory
-    mode: 0775
+    mode: "775"
 
 - name: Configure docker
   ansible.builtin.copy:

@@ -10,7 +10,7 @@
   # this is only executed if explicity requested
   tags: ['never', 'docker']
 
-- name: load site configuration
+- name: Load site configuration
   ansible.builtin.include_vars:
     file: "{{ item }}"
     name: "{{ 'site_incl_vars_' ~ item | basename | splitext | first }}"
@@ -28,14 +28,14 @@
       ansible.builtin.file:
         path: /etc/egi
         state: directory
-        mode: 0755
+        mode: "755"
     - name: Create /etc/egi/vos directory
       ansible.builtin.file:
         path: /etc/egi/vos
         state: directory
-        mode: 0755
+        mode: "755"
     # Loop over the VO configuration
-    - name: create VO specific files
+    - name: Create VO specific files
       ansible.builtin.include_tasks: vo-config.yml
       loop: "{{ vos | dict2items }}"
       no_log: true
@@ -47,23 +47,23 @@
       ansible.builtin.file:
         path: /etc/egi
         state: directory
-        mode: 0755
+        mode: "755"
     - name: Create /etc/egi/cloud-info directory
       ansible.builtin.file:
         path: /etc/egi/cloud-info
         state: directory
-        mode: 0755
+        mode: "755"
     - name: Create /var/lock/cloud-info directory
       ansible.builtin.file:
         path: /var/lock/cloud-info
         state: directory
-        mode: 0755
+        mode: "755"
     - name: Create /var/log/cloud-info directory
       ansible.builtin.file:
         path: /var/log/cloud-info
         state: directory
-        mode: 0755
-    - name: site specific config
+        mode: "755"
+    - name: Site specific config
       ansible.builtin.include_tasks: cloud-info.yml
       vars:
         site: "{{ item }}"
