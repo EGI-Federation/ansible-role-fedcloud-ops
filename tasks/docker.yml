@@ -50,7 +50,7 @@
         "storage-driver": "overlay2"
       }
     dest: /etc/docker/daemon.json
-    mode: 0660
+    mode: "660"
 
 - name: Restart docker
   ansible.builtin.systemd:
