@@ -14,9 +14,9 @@
 - name: Cloud info cron
   ansible.builtin.cron:
     name: cloud-info-provider {{ site.gocdb }}
-    weekday: {{ cron.weekday}}
-    minute: {{ cron.minute }}
-    hour: {{ cron.hour }}
+    weekday: "{{ cron.weekday}}"
+    minute: "{{ cron.minute }}"
+    hour: "{{ cron.hour }}"
     user: root
     job: >
       flock -n -w {{ cron.timeout }} /var/lock/cloud-info/{{ filename }}
