@@ -14,7 +14,7 @@
 - name: Cloud info cron
   ansible.builtin.cron:
     name: cloud-info-provider {{ site.gocdb }}
-    weekday: "{{ cloud_info_cron.weekday}}"
+    weekday: "{{ cloud_info_cron.weekday }}"
     minute: "{{ cloud_info_cron.minute }}"
     hour: "{{ cloud_info_cron.hour }}"
     user: root
