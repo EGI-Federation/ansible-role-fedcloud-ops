@@ -22,3 +22,9 @@ site_config_dir: sites
 
 # No site information as default
 sites: []
+
+cloud_info_cron:
+  minute: "4,34"
+  hour: "*"
+  weekday: "*"
+  timeout: "600"
